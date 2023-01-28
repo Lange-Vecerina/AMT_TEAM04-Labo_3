@@ -3,6 +3,7 @@ package ch.heig.quotes.api.entities;
 
 import jakarta.persistence.*;
 
+
 @Entity(name = "Quote")
 @Table(name = "quotes")
 public class QuoteEntity {

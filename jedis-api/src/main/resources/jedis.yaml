@@ -6,15 +6,15 @@ info:
 servers:
   - url: 'http://localhost:9090/api'
 tags:
-  - name: Quotes-end-point
-    description: Gestion des quotes
+  - name: Jedis-end-point
+    description: Gestion des jedis
 paths:
-  /quotes:
+  /jedis:
     get:
       tags:
-        - Quotes-end-point
-      summary: Obtient une liste de toutes les quotes
-      operationId: getQuotes
+        - Jedis-end-point
+      summary: Obtient une liste de toutes les jedis
+      operationId: getJedis
       responses:
         '200':
           description: OK
@@ -23,38 +23,38 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Quote'
+                  $ref: '#/components/schemas/Jedi'
         '404':
           description: Not Found
     post:
       tags:
-        - Quotes-end-point
-      summary: Ajoute une nouvelle quote
-      operationId: addQuote
+        - Jedis-end-point
+      summary: Ajoute un nouvelle jedi
+      operationId: addJedi
       requestBody:
         content:
           'application/json':
             schema:
-              $ref: '#/components/schemas/Quote'
+              $ref: '#/components/schemas/Jedi'
       responses:
         '201':
-          description: quote crée
+          description: jedi crée
           headers:
             Location:
-              description: URL de la quote crée
+              description: URL du jedi crée
               schema:
                 type: string
                 format: uri
-  /quotes/{id}:
+  /jedis/{id}:
     get:
       tags:
-        - Quotes-end-point
-      summary: Obtient une quote
-      operationId: getQuote
+        - Jedis-end-point
+      summary: Obtient un jedi
+      operationId: getJedi
       parameters:
         - name: id
           in: path
-          description: numéro de la quote à obtenir
+          description: numéro du jedi à obtenir
           required: true
           schema:
             type: integer
@@ -65,24 +65,24 @@ paths:
           content:
             'application/json':
               schema:
-                $ref: '#/components/schemas/Quote'
+                $ref: '#/components/schemas/Jedi'
         '404':
           description: Not Found
       deprecated: false
 components:
   schemas:
-    Quote:
-      description: toutes les caractéristiques d'une quote
+    Jedi:
+      description: toutes les caractéristiques d'un jedi
       type: object
       properties:
-        author:
-          description: nom de l'auteur
+        name:
+          description: nom du jedi
           type: string
-        citation:
-          description: phrase de la citation
+        rank:
+          description: rank du jedi
           type: string
         id:
-          description: numéro auto-incrémenté de la citation
+          description: numéro auto-incrémenté du jedi
           type: integer
           format: int32
-      title: Quote
+      title: Jedi
