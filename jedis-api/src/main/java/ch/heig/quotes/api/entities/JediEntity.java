@@ -10,12 +10,12 @@ import java.util.Set;
 @Entity(name = "Jedi")
 @Table(name = "jedis")
 public class JediEntity {
-/*@TableGenerator(name = "genJedis",
+@TableGenerator(name = "genJedis",
             table = "idJedis",
-            pkColumnName = "name",
+            pkColumnName = "id",
             valueColumnName = "val",
-            initialValue = 3,
-            allocationSize = 100)*/
+            initialValue = 7,
+            allocationSize = 100)
     @Id // @GeneratedValue
     @GeneratedValue(strategy = GenerationType.TABLE, generator = "genJedis")
     private int id;

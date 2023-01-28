@@ -11,7 +11,7 @@ public class LightsaberEntity {
             table = "idLightsabers",
             pkColumnName = "name",
             valueColumnName = "val",
-            initialValue = 3,
+            initialValue = 6,
             allocationSize = 100)
     @Id // @GeneratedValue
     @GeneratedValue(strategy = GenerationType.TABLE, generator = "genLightsabers")

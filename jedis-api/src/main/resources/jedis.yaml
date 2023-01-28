@@ -69,6 +69,7 @@ paths:
         '404':
           description: Not Found
       deprecated: false
+
 components:
   schemas:
     Jedi:
@@ -86,3 +87,16 @@ components:
           type: integer
           format: int32
       title: Jedi
+    LightSaber:
+      description: toutes les caractéristiques d'un sabre laser
+      type: object
+      properties:
+        color:
+          description: couleur du sabre laser
+          type: string
+        id:
+          description: numéro auto-incrémenté du sabre laser
+          type: integer
+          format: int32
+      title: LightSaber
+
