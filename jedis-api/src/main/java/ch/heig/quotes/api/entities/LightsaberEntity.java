@@ -21,8 +21,8 @@ public class LightsaberEntity {
     private String color;
 
 
-    @ManyToMany(mappedBy = "likedLightsabers")
-    Set<JediEntity> likedByJedis;
+    @ManyToMany(mappedBy = "lightsabers")
+    Set<JediEntity> usedByJedis;
 
 
     public LightsaberEntity() {}

@@ -23,6 +23,6 @@
 
     <modules>
         <module>jedis-api</module>
-        <module>quotes-spec</module>
+        <module>jedis-spec</module>
     </modules>
 </project>

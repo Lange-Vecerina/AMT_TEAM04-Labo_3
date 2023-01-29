@@ -51,10 +51,10 @@ public class JediEndPoint implements JedisApi {
             return ResponseEntity.created(jedisService.updateJedi(id, jedi)).build();
         }
 
-        /*@Override
+        @Override
         public ResponseEntity<List<Lightsaber>> getLightsabersOfJedi(Integer id) {
             return new ResponseEntity<List<Lightsaber>>(jedisService.getLightsabers(id),HttpStatus.OK);
-        }*/
+        }
 
 
 
