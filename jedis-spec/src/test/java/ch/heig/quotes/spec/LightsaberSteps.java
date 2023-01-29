@@ -1,20 +1,15 @@
 package ch.heig.quotes.spec;
 
-
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openapitools.client.ApiException;
 import org.openapitools.client.ApiResponse;
-//import org.openapitools.client.api.QuotesEndPointApi;
-//import org.openapitools.client.model.Quote;
 import org.openapitools.client.model.Lightsaber;
 import org.openapitools.client.api.LightsabersEndPointApi;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class LigthsaberSteps {
+public class LightsaberSteps {
     private final LightsabersEndPointApi api = new LightsabersEndPointApi();
     private Lightsaber lightsaber;
     private int statusCode;
@@ -39,8 +34,13 @@ public class LigthsaberSteps {
         /*ApiResponse response = api.addLightsaberWithHttpInfo(lightsaber);
         statusCode = response.getStatusCode();*/
     }
+
+
+
     @Then("I receive a {int} status code for the lightsaber")
     public void i_receive_a_status_code_for_the_lightsaber(int arg1) throws Throwable {
         assertEquals(arg1, statusCode);
     }
+
+
 }

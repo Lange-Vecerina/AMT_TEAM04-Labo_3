@@ -92,7 +92,7 @@ paths:
           description: OK
         '404':
           description: Not Found
-  /jedis/{id}/ligthsabers:
+  /jedis/{id}/lightsabers:
     get:
       tags:
         - Jedis-end-point
