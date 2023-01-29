@@ -2,9 +2,10 @@ package ch.heig.quotes.api.entities;
 
 import jakarta.persistence.*;
 
+import javax.validation.constraints.NotNull;
 import java.util.Set;
 
-@Entity(name = "LightSaber")
+@Entity(name = "Lightsaber")
 @Table(name = "lightsabers")
 public class LightsaberEntity {
     @TableGenerator(name = "genLightsabers",
@@ -16,6 +17,7 @@ public class LightsaberEntity {
     @Id // @GeneratedValue
     @GeneratedValue(strategy = GenerationType.TABLE, generator = "genLightsabers")
     private int id;
+    @NotNull
     private String color;
 
 

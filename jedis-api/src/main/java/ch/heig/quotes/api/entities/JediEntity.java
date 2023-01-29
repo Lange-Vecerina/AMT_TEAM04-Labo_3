@@ -3,6 +3,7 @@ package ch.heig.quotes.api.entities;
 
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 
 import java.util.Set;
 
@@ -19,6 +20,7 @@ public class JediEntity {
     @Id // @GeneratedValue
     @GeneratedValue(strategy = GenerationType.TABLE, generator = "genJedis")
     private int id;
+    @NotNull
     private String name;
     private String rank;
 
@@ -28,7 +30,7 @@ public class JediEntity {
             joinColumns = @JoinColumn(name = "jedi_id"),
             inverseJoinColumns = @JoinColumn(name = "lightsaber_id")
     )
-    Set<LightsaberEntity> likedLightsabers;
+    Set<LightsaberEntity> lightsabers;
 
     public JediEntity() {}
 
@@ -59,4 +61,17 @@ public class JediEntity {
     public void setRank(String rank) {
         this.rank = rank;
     }
+
+    public Set<LightsaberEntity> getLightsabers() {
+        return lightsabers;
+    }
+
+    public void setLightsabers(Set<LightsaberEntity> lightsabers) {
+        this.lightsabers = lightsabers;
+    }
+
+    public void setRelationWithLightsaber(LightsaberEntity lightsaber) {
+        this.lightsabers.add(lightsaber);
+    }
+
 }
