@@ -19,10 +19,8 @@ public class LightsaberEntity {
     @NotNull
     private String color;
 
-
     @ManyToMany(mappedBy = "lightsabers")
     Set<JediEntity> usedByJedis;
-
 
     public LightsaberEntity() {}
 

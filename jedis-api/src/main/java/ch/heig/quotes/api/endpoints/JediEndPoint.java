@@ -12,7 +12,6 @@ import org.openapitools.api.JedisApi;
 import java.util.List;
 
 
-
 @RestController
 public class JediEndPoint implements JedisApi {
 

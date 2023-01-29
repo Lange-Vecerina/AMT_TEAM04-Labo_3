@@ -7,6 +7,6 @@ import java.util.List;
 
 @Repository
 public interface LightsaberRepository extends JpaRepository<LightsaberEntity, Integer> {
-    LightsaberEntity findById(int id);
-    List<LightsaberEntity> findByColorLike(String pattern);
+    /*LightsaberEntity findById(int id);
+    List<LightsaberEntity> findByColorLike(String pattern);*/
 }

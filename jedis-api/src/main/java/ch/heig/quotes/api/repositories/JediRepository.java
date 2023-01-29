@@ -7,7 +7,7 @@ import java.util.List;
 
 @Repository
 public interface JediRepository extends JpaRepository<JediEntity, Integer> {
-        JediEntity findById(int id);
-        List<JediEntity> findByNameLike(String pattern);
+        /*JediEntity findById(int id);
+        List<JediEntity> findByNameLike(String pattern);*/
 }
 

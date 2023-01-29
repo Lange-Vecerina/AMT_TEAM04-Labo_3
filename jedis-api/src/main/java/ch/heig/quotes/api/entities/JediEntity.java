@@ -5,6 +5,9 @@ import jakarta.validation.constraints.NotNull;
 import java.util.Set;
 
 
+/**
+ * @author Yanik Lange, Ivan Vecerina
+ */
 @Entity(name = "Jedi")
 @Table(name = "jedis")
 public class JediEntity {
@@ -63,12 +66,12 @@ public class JediEntity {
         return lightsabers;
     }
 
-    public void setLightsabers(Set<LightsaberEntity> lightsabers) {
+    /*public void setLightsabers(Set<LightsaberEntity> lightsabers) {
         this.lightsabers = lightsabers;
     }
 
     public void setRelationWithLightsaber(LightsaberEntity lightsaber) {
         this.lightsabers.add(lightsaber);
-    }
+    }*/
 
 }

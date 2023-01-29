@@ -2,7 +2,8 @@ package ch.heig.quotes.api.services;
 
 import ch.heig.quotes.api.entities.JediEntity;
 import ch.heig.quotes.api.entities.LightsaberEntity;
-import ch.heig.quotes.api.exceptions.QuoteNotFoundException;
+import ch.heig.quotes.api.exceptions.JediNotFoundException;
+import ch.heig.quotes.api.exceptions.LightsaberNotFoundException;
 import ch.heig.quotes.api.repositories.JediRepository;
 import org.openapitools.model.Jedi;
 import org.openapitools.model.Lightsaber;
@@ -57,7 +58,7 @@ public class JedisService {
             jedi.setRank(jediEntity.getRank());
             return jedi;
         } else {
-            throw new QuoteNotFoundException(id);
+            throw new JediNotFoundException(id);
         }
     }
 
@@ -75,7 +76,7 @@ public class JedisService {
                     .toUri();
             return uri;
         } else {
-            throw new QuoteNotFoundException(id);
+            throw new JediNotFoundException(id);
         }
     }
 
@@ -92,7 +93,7 @@ public class JedisService {
             }
             return lightsabers;
         } else {
-            throw new QuoteNotFoundException(id);
+            throw new LightsaberNotFoundException(id);
         }
     }
 
@@ -111,7 +112,7 @@ public class JedisService {
                     .toUri();
             return uri;
         } else {
-            throw new QuoteNotFoundException(id);
+            throw new LightsaberNotFoundException(id);
         }
     }
 }
