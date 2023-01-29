@@ -117,7 +117,33 @@ paths:
                   $ref: '#/components/schemas/Lightsaber'
         '404':
           description: Not Found
-
+    put:
+      tags:
+        - Jedis-end-point
+      summary: Ajoute un nouveau sabre laser à un jedi
+      operationId: addLightsaberToJedi
+      parameters:
+        - name: id
+          in: path
+          description: numéro du jedi à obtenir
+          required: true
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        content:
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/Lightsaber'
+      responses:
+        '201':
+          description: sabre laser crée
+          headers:
+            Location:
+              description: URL du sabre laser crée
+              schema:
+                type: string
+                format: uri
   /lightsabers:
     get:
       tags:
@@ -137,7 +163,7 @@ paths:
           description: Not Found
     post:
       tags:
-        - Lighsabers-end-point
+        - Lightsabers-end-point
       summary: Ajoute un nouveau sabre laser
       operationId: addLightsaber
       requestBody:

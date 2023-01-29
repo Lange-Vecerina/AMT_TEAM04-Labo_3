@@ -1,7 +1,6 @@
 package ch.heig.quotes.api.entities;
 
 import jakarta.persistence.*;
-
 import javax.validation.constraints.NotNull;
 import java.util.Set;
 

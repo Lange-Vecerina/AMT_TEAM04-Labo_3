@@ -18,7 +18,7 @@ insert into jedis values (7,'Jar Jar Binks', 'sith-lord');
 insert into lightsabers values (1,'blue');
 insert into lightsabers values (2,'green');
 insert into lightsabers values (3,'red');
-insert into lightsabers values (4,'purple');
+insert into lightsabers values (4,'dark');
 insert into lightsabers values (5,'yellow');
 insert into lightsabers values (6,'orange');
 

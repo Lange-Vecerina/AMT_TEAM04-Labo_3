@@ -1,10 +1,7 @@
 package ch.heig.quotes.api.entities;
 
-
-
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
-
 import java.util.Set;
 
 
@@ -24,7 +21,7 @@ public class JediEntity {
     private String name;
     private String rank;
 
-    @ManyToMany
+    @ManyToMany(cascade = {CascadeType.ALL})
     @JoinTable(
             name = "jedi_lightsaber",
             joinColumns = @JoinColumn(name = "jedi_id"),

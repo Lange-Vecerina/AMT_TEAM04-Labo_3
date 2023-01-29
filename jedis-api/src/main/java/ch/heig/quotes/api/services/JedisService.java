@@ -7,12 +7,9 @@ import ch.heig.quotes.api.repositories.JediRepository;
 import org.openapitools.model.Jedi;
 import org.openapitools.model.Lightsaber;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
@@ -98,19 +95,24 @@ public class JedisService {
             throw new QuoteNotFoundException(id);
         }
     }
-}
 
-   /* public List<Lightsaber> getLightsabers(Integer id) {
+    public URI addLightsaber(Integer id, Lightsaber lightsaber) {
         Optional<JediEntity> opt = jediRepository.findById(id);
         if (opt.isPresent()) {
             JediEntity jediEntity = opt.get();
-            List<Lightsaber> lightsabers = new ArrayList<>();
-            for (Lightsaber lightsaber : jediEntity.getLightsabers()) {
-                lightsabers.add(lightsaber);
-            }
-            return lightsabers;
+            LightsaberEntity lightsaberEntity = new LightsaberEntity();
+            lightsaberEntity.setColor(lightsaber.getColor());
+            jediEntity.getLightsabers().add(lightsaberEntity);
+            jediRepository.save(jediEntity);
+            URI uri = ServletUriComponentsBuilder
+                    .fromCurrentRequest()
+                    .path("/{id}")
+                    .buildAndExpand(lightsaber.getId())
+                    .toUri();
+            return uri;
         } else {
             throw new QuoteNotFoundException(id);
         }
     }
-}*/
+}
+

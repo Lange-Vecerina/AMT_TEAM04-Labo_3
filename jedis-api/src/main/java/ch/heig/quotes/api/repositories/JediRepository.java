@@ -1,11 +1,8 @@
 package ch.heig.quotes.api.repositories;
 
 import ch.heig.quotes.api.entities.JediEntity;
-import ch.heig.quotes.api.entities.LightsaberEntity;
-import ch.heig.quotes.api.entities.QuoteEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-
 import java.util.List;
 
 @Repository

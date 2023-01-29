@@ -22,8 +22,8 @@ public class JediSteps {
     @Given("I have a jedi payload")
     public void i_have_a_jedi_payload() throws Throwable {
         jedi = new Jedi();
-        jedi.setName("Obi-Wan Kenobi");
-        jedi.setRank("Jedi-Knight");
+        jedi.setName("Mace Windu");
+        jedi.setRank("jedi-master");
     }
 
     @When("I POST it to the \\/jedis endpoint")
