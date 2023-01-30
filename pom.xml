@@ -22,7 +22,7 @@
     </parent>
 
     <modules>
-        <module>quotes-api</module>
-        <module>quotes-spec</module>
+        <module>jedis-api</module>
+        <module>jedis-spec</module>
     </modules>
 </project>

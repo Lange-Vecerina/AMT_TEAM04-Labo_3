@@ -1,0 +1,212 @@
+openapi: '3.0.3'
+info:
+  description: Api Documentation
+  version: '1.0'
+  title: Api Documentation
+servers:
+  - url: 'http://localhost:9090/api'
+tags:
+  - name: Jedis-end-point
+    description: Gestion des jedis
+paths:
+  /jedis:
+    get:
+      tags:
+        - Jedis-end-point
+      summary: Obtient une liste de toutes les jedis
+      operationId: getJedis
+      responses:
+        '200':
+          description: OK
+          content:
+            'application/json':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Jedi'
+        '404':
+          description: Not Found
+    post:
+      tags:
+        - Jedis-end-point
+      summary: Ajoute un nouvelle jedi
+      operationId: addJedi
+      requestBody:
+        content:
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/Jedi'
+      responses:
+        '201':
+          description: jedi crée
+          headers:
+            Location:
+              description: URL du jedi crée
+              schema:
+                type: string
+                format: uri
+  /jedis/{id}:
+    get:
+      tags:
+        - Jedis-end-point
+      summary: Obtient un jedi
+      operationId: getJedi
+      parameters:
+        - name: id
+          in: path
+          description: numéro du jedi à obtenir
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Jedi'
+        '404':
+          description: Not Found
+      deprecated: false
+    patch:
+      tags:
+        - Jedis-end-point
+      summary: Met à jour un jedi
+      operationId: updateJedi
+      parameters:
+        - name: id
+          in: path
+          description: numéro du jedi à mettre à jour
+          required: true
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        content:
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/Jedi'
+      responses:
+        '204':
+          description: OK
+        '404':
+          description: Not Found
+  /jedis/{id}/lightsabers:
+    get:
+      tags:
+        - Jedis-end-point
+      summary: Obtient une liste de tous les sabres lasers d'un jedi
+      operationId: getLightsabersOfJedi
+      parameters:
+        - name: id
+          in: path
+          description: numéro du jedi à obtenir
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            'application/json':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Lightsaber'
+        '404':
+          description: Not Found
+    put:
+      tags:
+        - Jedis-end-point
+      summary: Ajoute un nouveau sabre laser à un jedi
+      operationId: addLightsaberToJedi
+      parameters:
+        - name: id
+          in: path
+          description: numéro du jedi à obtenir
+          required: true
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        content:
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/Lightsaber'
+      responses:
+        '201':
+          description: sabre laser crée
+          headers:
+            Location:
+              description: URL du sabre laser crée
+              schema:
+                type: string
+                format: uri
+  /lightsabers:
+    get:
+      tags:
+        - Lightsabers-end-point
+      summary: Obtient une liste de toutes les sabres lasers
+      operationId: getLightsabers
+      responses:
+        '200':
+          description: OK
+          content:
+            'application/json':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Lightsaber'
+        '404':
+          description: Not Found
+    post:
+      tags:
+        - Lightsabers-end-point
+      summary: Ajoute un nouveau sabre laser
+      operationId: addLightsaber
+      requestBody:
+        content:
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/Lightsaber'
+      responses:
+        '201':
+          description: sabre laser crée
+          headers:
+            Location:
+              description: URL du sabre laser crée
+              schema:
+                type: string
+                format: uri
+components:
+  schemas:
+    Jedi:
+      description: toutes les caractéristiques d'un jedi
+      type: object
+      properties:
+        name:
+          description: nom du jedi
+          type: string
+        rank:
+          description: rank du jedi
+          type: string
+        id:
+          description: numéro auto-incrémenté du jedi
+          type: integer
+          format: int32
+      title: Jedi
+    Lightsaber:
+      description: toutes les caractéristiques d'un sabre laser
+      type: object
+      properties:
+        color:
+          description: couleur du sabre laser
+          type: string
+        id:
+          description: numéro auto-incrémenté du sabre laser
+          type: integer
+          format: int32
+      title: LightSaber
+
