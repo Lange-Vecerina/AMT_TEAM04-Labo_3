@@ -2,6 +2,7 @@ package ch.heig.quotes.api.services;
 
 import ch.heig.quotes.api.entities.JediEntity;
 import ch.heig.quotes.api.entities.LightsaberEntity;
+import ch.heig.quotes.api.exceptions.JediBadRequestException;
 import ch.heig.quotes.api.exceptions.JediNotFoundException;
 import ch.heig.quotes.api.exceptions.LightsaberNotFoundException;
 import ch.heig.quotes.api.repositories.JediRepository;
@@ -37,15 +38,19 @@ public class JedisService {
 
     public URI addJedi(@RequestBody Jedi jedi) {
         JediEntity jediEntity = new JediEntity();
-        jediEntity.setName(jedi.getName());
-        jediEntity.setRank(jedi.getRank());
-        JediEntity jediAdded = jediRepository.save(jediEntity);
-        URI uri = ServletUriComponentsBuilder
-                .fromCurrentRequest()
-                .path("/{id}")
-                .buildAndExpand(jediAdded.getId())
-                .toUri();
-        return uri;
+        try {
+            jediEntity.setName(jedi.getName());
+            jediEntity.setRank(jedi.getRank());
+            JediEntity jediAdded = jediRepository.save(jediEntity);
+            URI uri = ServletUriComponentsBuilder
+                    .fromCurrentRequest()
+                    .path("/{id}")
+                    .buildAndExpand(jediAdded.getId())
+                    .toUri();
+            return uri;
+        } catch (Exception e) {
+            throw new JediBadRequestException();
+        }
     }
 
     public Jedi getJedi(Integer id) {

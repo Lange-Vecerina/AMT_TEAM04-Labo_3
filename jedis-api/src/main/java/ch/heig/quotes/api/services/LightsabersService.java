@@ -1,6 +1,7 @@
 package ch.heig.quotes.api.services;
 
 import ch.heig.quotes.api.entities.LightsaberEntity;
+import ch.heig.quotes.api.exceptions.LightsaberBadRequestException;
 import ch.heig.quotes.api.repositories.LightsaberRepository;
 import org.openapitools.model.Lightsaber;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,15 +33,18 @@ public class LightsabersService {
 
     public URI addLightsaber(Lightsaber lightsaber) {
         LightsaberEntity lightsaberEntity = new LightsaberEntity();
-        lightsaberEntity.setColor(lightsaber.getColor());
-        LightsaberEntity lightsaberAdded = lightsaberRepository.save(lightsaberEntity);
-
-        URI uri = ServletUriComponentsBuilder
-                .fromCurrentRequest()
-                .path("/{id}")
-                .buildAndExpand(lightsaberAdded.getId())
-                .toUri();
-        return uri;
+        try {
+            lightsaberEntity.setColor(lightsaber.getColor());
+            LightsaberEntity lightsaberAdded = lightsaberRepository.save(lightsaberEntity);
+            URI uri = ServletUriComponentsBuilder
+                    .fromCurrentRequest()
+                    .path("/{id}")
+                    .buildAndExpand(lightsaberAdded.getId())
+                    .toUri();
+            return uri;
+        } catch (Exception e) {
+            throw new LightsaberBadRequestException();
+        }
     }
 
 }

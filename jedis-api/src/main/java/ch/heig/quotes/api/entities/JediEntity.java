@@ -51,7 +51,11 @@ public class JediEntity {
         return name;
     }
     public void setName(String name) {
-        this.name = name;
+        if(name == null || name.isEmpty()) {
+            this.name = null;
+        } else {
+            this.name = name;
+        }
     }
 
     public String getRank() {

@@ -25,6 +25,14 @@ public class JediSteps {
         jedi.setRank("jedi-master");
     }
 
+    @Given("I have a wrong jedi payload")
+    public void the_jedi_doesn_t_exist() {
+        jedi = new Jedi();
+        jedi.setName("");
+        jedi.setRank("jedi-master");
+    }
+
+
     @Given("I have a lightsaber payload for the jedi")
     public void i_have_a_lightsaber_payload_for_the_jedi() throws Throwable {
         lightsaber = new Lightsaber();

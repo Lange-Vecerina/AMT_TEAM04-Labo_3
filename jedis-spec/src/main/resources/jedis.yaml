@@ -45,6 +45,8 @@ paths:
               schema:
                 type: string
                 format: uri
+        '400':
+          description: Bad Request
   /jedis/{id}:
     get:
       tags:
@@ -144,6 +146,8 @@ paths:
               schema:
                 type: string
                 format: uri
+        '400':
+          description: Bad Request
   /lightsabers:
     get:
       tags:
@@ -180,6 +184,8 @@ paths:
               schema:
                 type: string
                 format: uri
+        '400':
+          description: Bad Request
 components:
   schemas:
     Jedi:
